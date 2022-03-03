@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Button extends BaseControl {
+    public Button (){
+        super();
+    }
     public Button(By locator) {
         super(locator);
     }

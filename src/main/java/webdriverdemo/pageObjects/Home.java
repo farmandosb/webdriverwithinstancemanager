@@ -1,5 +1,6 @@
 package webdriverdemo.pageObjects;
 
+import webdriverdemo.controls.Button;
 import webdriverdemo.controls.Link;
 import org.openqa.selenium.By;
 
@@ -23,5 +24,13 @@ public class Home extends BasePageObject {
         }
 
         return result;
+    }
+
+    public Iterable<Button> buttons (){
+        return this.createListOfControls(".//a",Button.class);
+    }
+
+    public Button btnPrimero (){
+        return this.newControl(".//button", Button.class);
     }
 }

@@ -2,7 +2,10 @@ package webdriverdemo.controls;
 
 import org.openqa.selenium.By;
 
-public class Link extends Button {
+public class Link extends BaseControl {
+
+    public Link(){
+    }
     public Link(By locator) {
         super(locator);
     }

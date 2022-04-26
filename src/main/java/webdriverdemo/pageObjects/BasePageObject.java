@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.Callable;
 
 public class BasePageObject {
@@ -67,7 +66,7 @@ public class BasePageObject {
     public <T extends BaseControl > T newControl(String xpath, Class<T> type){
         try {
             T newControl = type.newInstance();
-            newControl.setContainer(this.container.findElement(By.xpath(xpath)));
+            newControl.setWebElement(this.container.findElement(By.xpath(xpath)));
             newControl.setLocator(By.xpath(xpath));
             return newControl;
         } catch (Exception e) {
@@ -77,14 +76,15 @@ public class BasePageObject {
     }
     public <T extends BaseControl> Iterable<T> createListOfControls(String xpath, Class<T> type){
         List<T> listOfControls = new ArrayList<T>();
-        long count = this.driver.findElements(By.xpath(xpath)).stream().count();
+        long count = this.container.findElements(By.xpath(xpath)).stream().count();
 
         for (int i = 1; i <= count; i++)
         {
             By locator = By.xpath(String.format("(%s)[%d]", xpath, i));
             try {
                 T newControl = type.newInstance();
-                newControl.setContainer(this.container.findElement(locator));
+                newControl.setWebElement(this.container.findElement(locator));
+                newControl.setLocator(null);
                 listOfControls.add(newControl);
             } catch (Exception e) {
                 e.printStackTrace();

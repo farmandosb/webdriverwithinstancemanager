@@ -26,8 +26,8 @@ public class Home extends BasePageObject {
         return result;
     }
 
-    public Iterable<Button> buttons (){
-        return this.createListOfControls(".//a",Button.class);
+    public Iterable<Link> links (){
+        return this.createListOfControls(".//a", Link.class);
     }
 
     public Button btnPrimero (){

@@ -12,7 +12,7 @@ import java.util.concurrent.Callable;
 public class BaseControl {
     protected WebDriver driver;
     protected By by;
-    private WebElement container;
+    private WebElement webElement;
 
     public BaseControl(){
         this.driver = WebDriverManager.getCurrentInstance().getCurrentDriver();
@@ -20,12 +20,16 @@ public class BaseControl {
     public BaseControl(By locator){
         this.driver = WebDriverManager.getCurrentInstance().getCurrentDriver();
         this.by = locator;
-        this.container = this.driver.findElement(locator);
+        this.webElement = this.driver.findElement(locator);
     }
 
     protected WebElement webElement(){
         try{
-            return this.driver.findElement(this.by);
+            if(this.by != null){
+                this.webElement = this.driver.findElement(this.by);
+            }
+
+            return this.webElement;
         }
         catch (Exception e){
             return null;
@@ -36,8 +40,8 @@ public class BaseControl {
         this.by = newLocator;
     }
 
-    public void setContainer(WebElement webElement){
-        this.container = webElement;
+    public void setWebElement(WebElement webElement){
+        this.webElement = webElement;
     }
 
     public boolean isDisplayed()

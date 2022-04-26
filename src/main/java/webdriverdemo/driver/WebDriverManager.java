@@ -15,6 +15,7 @@ public class WebDriverManager {
     public WebDriverManager(){ }
 
     private static Long getCurrentThreadId(){
+
         return Thread.currentThread().getId();
     }
 
@@ -22,6 +23,7 @@ public class WebDriverManager {
         mutex.lock();
         WebDriverManager result = null;
 
+        Long id = getCurrentThreadId();
         if (instances.containsKey(getCurrentThreadId())){
             result = instances.get(getCurrentThreadId());
         }
@@ -40,7 +42,6 @@ public class WebDriverManager {
         if (getInstance() == null){
             setInstance(new WebDriverManager());
         }
-
         return getInstance();
     }
 

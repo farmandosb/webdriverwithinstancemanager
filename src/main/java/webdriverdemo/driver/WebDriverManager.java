@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import sun.awt.Mutex;
+import webdriverdemo.configuration.ConfigureExternalProperties;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -47,7 +48,9 @@ public class WebDriverManager {
 
     public WebDriver getCurrentDriver(){
         if (activeDriver == null){
-            System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+            ConfigureExternalProperties.getExternalProperties();
+            String location = ConfigureExternalProperties.prop.get("chromedriver.location").toString();
+            System.setProperty("webdriver.chrome.driver", location);
             ChromeOptions opts = new ChromeOptions();
             opts.addArguments("--disable-infobars");
             activeDriver = new ChromeDriver(opts);

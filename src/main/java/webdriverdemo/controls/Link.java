@@ -2,7 +2,7 @@ package webdriverdemo.controls;
 
 import org.openqa.selenium.By;
 
-public class Link extends BaseControl {
+public class Link extends ClickableControl {
 
     public Link(){
     }

@@ -5,7 +5,8 @@ Demo Selenium WebDriver project for automating UltimateQA website.
 
 - Java 1.8
 - Maven
-- Chrome Browser 98
+- Chrome Browser
+- Chromedriver (matching version with ChromeBrowser)
 
 
 ## Usage

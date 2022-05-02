@@ -8,7 +8,7 @@ import java.util.Properties;
 public class ConfigureExternalProperties {
     public static Properties prop;
 
-    public static Properties getExternalProperties(){
+    public static void getProperties(){
         try (InputStream input = new FileInputStream("C:/Users/fsuarez/IdeaProjects/webdriverjavademo/config.properties")) {
             // load a properties file
             Properties props = new Properties();
@@ -16,12 +16,10 @@ public class ConfigureExternalProperties {
             prop = props;
 
             // get the property value and print it out
-            System.out.println(prop.getProperty("chromedriver.location"));
+            System.out.println("props: " + prop.getProperty("chromedriver.location"));
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-        return prop;
     }
 }

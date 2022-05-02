@@ -48,7 +48,7 @@ public class WebDriverManager {
 
     public WebDriver getCurrentDriver(){
         if (activeDriver == null){
-            ConfigureExternalProperties.getExternalProperties();
+            ConfigureExternalProperties.getProperties();
             String location = ConfigureExternalProperties.prop.get("chromedriver.location").toString();
             System.setProperty("webdriver.chrome.driver", location);
             ChromeOptions opts = new ChromeOptions();

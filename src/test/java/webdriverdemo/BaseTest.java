@@ -12,7 +12,6 @@ import java.util.Properties;
 public class BaseTest {
     protected WebDriver driver;
     protected String url = "https://www.ultimateqa.com/automation/";
-    Properties prop;
 
     public BaseTest(){
         this.driver = WebDriverManager.getCurrentInstance().getCurrentDriver();
